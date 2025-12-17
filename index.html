@@ -3,21 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy New Year 08:99</title>
+    <title>Happy New Year Rova</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         /* --- RESET & BASICS --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            overflow-x: hidden;
-            background-color: #11052C;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; overflow-x: hidden; background-color: #11052C; }
 
         /* --- HEADER / NAVIGATION --- */
         header {
@@ -36,24 +27,14 @@
             font-size: 28px;
             font-weight: 800;
             color: #FF0000; /* Red Logo */
-            letter-spacing: -1px;
+            letter-spacing: 1px;
+            min-width: 80px; /* Prevents jumping when numbers change */
+            font-variant-numeric: tabular-nums; /* Monospaced numbers for stability */
         }
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-            font-size: 14px;
-            color: #333;
-        }
-
-        nav ul li {
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-        
+        nav ul { display: flex; list-style: none; gap: 25px; font-size: 14px; color: #333; }
+        nav ul li { cursor: pointer; transition: color 0.3s; }
         nav ul li:hover { color: #FFA500; }
-
         .search-icon { font-size: 18px; cursor: pointer; }
 
         .btn-query {
@@ -66,7 +47,6 @@
             cursor: pointer;
             transition: transform 0.2s;
         }
-        
         .btn-query:hover { transform: scale(1.05); }
 
         /* --- MAIN HERO SECTION --- */
@@ -82,7 +62,7 @@
             justify-content: center;
         }
 
-        /* String Lights at Top */
+        /* String Lights */
         .lights {
             position: absolute;
             top: -20px;
@@ -101,10 +81,8 @@
         .light-bulb::after {
             content: '';
             position: absolute;
-            top: -5px;
-            left: 50%;
-            width: 10px;
-            height: 10px;
+            top: -5px; left: 50%;
+            width: 10px; height: 10px;
             background: #FFD700;
             border-radius: 50%;
             box-shadow: 0 0 10px #FFD700;
@@ -112,20 +90,12 @@
         }
 
         /* Main Typography */
-        .hero-text {
-            text-align: center;
-            z-index: 10;
-            margin-bottom: 100px; /* Push up slightly */
-        }
-
+        .hero-text { text-align: center; z-index: 10; margin-bottom: 100px; }
         h1 {
             font-family: 'Great Vibes', cursive;
             font-size: 8rem;
             color: #FFF;
-            text-shadow: 
-                0 0 5px #FFD700,
-                0 0 10px #FFA500,
-                0 0 20px #FF4500;
+            text-shadow: 0 0 5px #FFD700, 0 0 10px #FFA500, 0 0 20px #FF4500;
             line-height: 1.1;
         }
 
@@ -141,173 +111,86 @@
             transition: all 0.3s;
             box-shadow: 0 0 15px rgba(255,255,255,0.2);
         }
+        .cta-btn:hover { background: white; color: #3D1B68; box-shadow: 0 0 20px #fff; }
 
-        .cta-btn:hover {
-            background: white;
-            color: #3D1B68;
-            box-shadow: 0 0 20px #fff;
-        }
-
-        /* --- DECORATIONS (CSS ART) --- */
-        
-        /* The Pink Ground */
+        /* --- DECORATIONS --- */
         .ground {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 35%;
+            position: absolute; bottom: 0; width: 100%; height: 35%;
             background: linear-gradient(180deg, #FF6EC7 0%, #FF1493 100%);
             border-top-left-radius: 50% 100px;
             border-top-right-radius: 50% 100px;
             z-index: 5;
-            display: flex;
-            justify-content: space-around;
-            align-items: flex-end;
+            display: flex; justify-content: space-around; align-items: flex-end;
             padding-bottom: 40px;
         }
 
-        /* Christmas Tree */
         .tree-container {
-            position: absolute;
-            right: 10%;
-            bottom: 15%; /* Sit on the hill */
-            z-index: 6;
+            position: absolute; right: 10%; bottom: 15%; z-index: 6;
             filter: drop-shadow(0 0 10px gold);
         }
         .tree-layer {
-            width: 0; 
-            height: 0; 
+            width: 0; height: 0; 
             border-left: 50px solid transparent;
             border-right: 50px solid transparent;
             border-bottom: 70px solid #0f5e0f;
             margin-bottom: -40px;
             position: relative;
         }
-        .tree-layer::after { /* Tinsel effect */
-            content: '';
-            position: absolute;
-            top: 40px; left: -40px;
+        .tree-layer::after {
+            content: ''; position: absolute; top: 40px; left: -40px;
             width: 80px; height: 2px;
             background: linear-gradient(90deg, transparent, gold, transparent);
             transform: rotate(-10deg);
         }
         .star {
-            width: 30px; height: 30px;
-            background: gold;
+            width: 30px; height: 30px; background: gold;
             clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-            position: relative;
-            left: 35px; bottom: 10px;
+            position: relative; left: 35px; bottom: 10px;
             animation: spin 6s linear infinite;
         }
         
-        /* Unicorn Silhouette (using text/emoji with filter for simplicity) */
         .unicorn {
-            position: absolute;
-            right: 25%;
-            bottom: 25%;
-            font-size: 80px;
-            z-index: 5;
-            filter: brightness(0) opacity(0.6); /* Silhouette style */
-            transform: scaleX(-1); /* Face the tree */
+            position: absolute; right: 25%; bottom: 25%; font-size: 80px; z-index: 5;
+            filter: brightness(0) opacity(0.6); transform: scaleX(-1);
         }
 
-        /* Gifts */
-        .gifts {
-            position: absolute;
-            right: 12%;
-            bottom: 10%;
-            z-index: 7;
-            display: flex;
-            gap: 5px;
-        }
+        .gifts { position: absolute; right: 12%; bottom: 10%; z-index: 7; display: flex; gap: 5px; }
         .gift {
-            width: 40px; height: 40px;
-            background: white;
-            position: relative;
+            width: 40px; height: 40px; background: white; position: relative;
             box-shadow: 0 0 10px rgba(0,0,0,0.3);
         }
-        .gift::before { /* Ribbon vertical */
-            content: ''; position: absolute; left: 15px; width: 10px; height: 100%; background: red;
-        }
-        .gift::after { /* Ribbon horizontal */
-            content: ''; position: absolute; top: 15px; width: 100%; height: 10px; background: red;
-        }
+        .gift::before { content: ''; position: absolute; left: 15px; width: 10px; height: 100%; background: red; }
+        .gift::after { content: ''; position: absolute; top: 15px; width: 100%; height: 10px; background: red; }
         .gift.pink { background: #FFB6C1; }
 
-        /* Wish List Footer Area */
-        .wishlist-container {
-            width: 100%;
-            display: flex;
-            justify-content: space-around;
-            position: relative;
-            z-index: 10;
-        }
-        
+        .wishlist-container { width: 100%; display: flex; justify-content: space-around; position: relative; z-index: 10; }
         .wish-item {
-            font-family: 'Great Vibes', cursive;
-            font-size: 3rem;
-            color: white;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            position: relative;
+            font-family: 'Great Vibes', cursive; font-size: 3rem; color: white;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2); position: relative;
         }
         .wish-item::before {
-            content: '';
-            position: absolute;
-            left: -15px; 
-            height: 100%;
-            width: 2px;
-            background: rgba(255,255,255,0.5);
+            content: ''; position: absolute; left: -15px; height: 100%; width: 2px; background: rgba(255,255,255,0.5);
         }
-        /* Hide first border */
         .wish-item:first-child::before { display: none; }
 
-        /* Floating Chat Icon */
         .chat-icon {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: #FFD700;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            cursor: pointer;
-            z-index: 100;
+            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
+            background: #FFD700; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; font-size: 24px;
+            color: white; box-shadow: 0 5px 15px rgba(0,0,0,0.2); cursor: pointer; z-index: 100;
         }
 
         /* --- ANIMATIONS --- */
-        @keyframes flicker {
-            0% { opacity: 0.5; }
-            100% { opacity: 1; transform: scale(1.2); }
-        }
-        @keyframes spin {
-            100% { transform: rotate(360deg); }
-        }
-        
-        /* Dynamic Falling Element Class */
+        @keyframes flicker { 0% { opacity: 0.5; } 100% { opacity: 1; transform: scale(1.2); } }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
         .particle {
-            position: absolute;
-            top: -10px;
-            color: white;
-            font-size: 20px;
-            pointer-events: none;
-            animation: fall linear forwards;
-            opacity: 0.8;
+            position: absolute; top: -10px; color: white; font-size: 20px;
+            pointer-events: none; animation: fall linear forwards; opacity: 0.8;
         }
-        
-        @keyframes fall {
-            to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
-        }
+        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
 
-        /* Responsive adjustments */
         @media (max-width: 768px) {
-            h1 { font-size: 4rem; }
-            nav ul { display: none; } /* Hide nav on mobile for demo */
+            h1 { font-size: 4rem; } nav ul { display: none; }
             .tree-container, .unicorn { transform: scale(0.6); right: 0; }
         }
     </style>
@@ -315,16 +198,12 @@
 <body>
 
     <header>
-        <div class="logo">08:99</div>
+        <div class="logo" id="live-clock">--:--</div>
         <nav>
             <ul>
-                <li>Flights</li>
-                <li>Car Hire</li>
-                <li>Abouts</li>
-                <li>My Maps</li>
-                <li>Insight</li>
-                <li>Contact</li>
-                <li>Collect</li>
+                <li>I</li>
+                <li>Love</li>
+                <li>You</li>
             </ul>
         </nav>
         <div style="display: flex; gap: 15px; align-items: center;">
@@ -334,7 +213,6 @@
     </header>
 
     <main class="herobox" id="hero">
-        
         <div class="lights">
             <div class="light-bulb"></div>
             <div class="light-bulb"></div>
@@ -342,14 +220,11 @@
             <div class="light-bulb"></div>
             <div class="light-bulb"></div>
         </div>
-
         <div class="hero-text">
             <h1>Happy<br>New Year</h1>
             <button class="cta-btn">Start Here</button>
         </div>
-
         <div class="unicorn">🦄</div>
-
         <div class="tree-container">
             <div class="star"></div>
             <div class="tree-layer"></div>
@@ -357,13 +232,11 @@
             <div class="tree-layer"></div>
             <div class="tree-layer"></div>
         </div>
-
         <div class="gifts">
             <div class="gift"></div>
             <div class="gift pink"></div>
             <div class="gift"></div>
         </div>
-
         <div class="ground">
             <div class="wishlist-container">
                 <div class="wish-item">Wish List</div>
@@ -376,39 +249,45 @@
     <div class="chat-icon">💬</div>
 
     <script>
+        // --- 1. Real Time Clock Script ---
+        function updateClock() {
+            const now = new Date();
+            // Get hours and minutes
+            let hours = now.getHours();
+            let minutes = now.getMinutes();
+            let seconds = now.getSeconds();
+
+            // Add leading zeros if needed (e.g., "9" becomes "09")
+            hours = hours < 10 ? '0' + hours : hours;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+
+            // Update the HTML
+            const timeString = hours + ':' + minutes + ':' + seconds;
+            document.getElementById('live-clock').innerText = timeString;
+        }
+
+        // Run immediately, then update every second
+        setInterval(updateClock, 1000);
+        updateClock(); 
+
+        // --- 2. Magic Particles Script ---
         const hero = document.getElementById('hero');
         const symbols = ['❄️', '★', '❤️', '✨'];
 
         function createParticle() {
             const particle = document.createElement('div');
             particle.classList.add('particle');
-            
-            // Randomize symbol
             particle.innerText = symbols[Math.floor(Math.random() * symbols.length)];
-            
-            // Randomize position
             particle.style.left = Math.random() * 100 + 'vw';
-            
-            // Randomize size
             const size = Math.random() * 20 + 10;
             particle.style.fontSize = size + 'px';
-            
-            // Randomize color slightly (white to pinkish)
             if(Math.random() > 0.5) particle.style.color = '#FFB6C1';
-            
-            // Randomize animation duration
-            const duration = Math.random() * 3 + 2; // between 2 and 5s
+            const duration = Math.random() * 3 + 2;
             particle.style.animationDuration = duration + 's';
-
             hero.appendChild(particle);
-
-            // Cleanup after animation
-            setTimeout(() => {
-                particle.remove();
-            }, duration * 1000);
+            setTimeout(() => { particle.remove(); }, duration * 1000);
         }
-
-        // Spawn a particle every 200ms
         setInterval(createParticle, 200);
     </script>
 </body>
